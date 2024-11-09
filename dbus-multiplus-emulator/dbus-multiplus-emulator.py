@@ -140,7 +140,7 @@ class DbusMultiPlusEmulator:
         self._dbusservice.add_path("/ProductName", productname)
         self._dbusservice.add_path("/CustomName", "")
         self._dbusservice.add_path("/FirmwareVersion", 1296)
-        self._dbusservice.add_path("/HardwareVersion", "1.0.0-beta1 (20241029)")
+        self._dbusservice.add_path("/HardwareVersion", "1.0.20241109.1")
         self._dbusservice.add_path("/Connected", 1)
 
         # self._dbusservice.add_path('/Latency', None)
@@ -387,7 +387,7 @@ class DbusMultiPlusEmulator:
                     self._dbusservice["/Ac/ActiveIn/L3/I"] = self.ac_load_items["/Ac/L3/Current"].get_value()
                 else:
                     self._dbusservice["/Ac/ActiveIn/L3/I"] = round(self._dbusservice["/Ac/ActiveIn/L3/P"] / self._dbusservice["/Ac/ActiveIn/L3/V"], 2)
-
+'''
         else:
             # calculate ratio of power between each phases
             active_in_L1_power = self.system_items["/Ac/ActiveIn/L1/Power"].get_value() if self.system_items["/Ac/ActiveIn/L1/Power"] is not None else 0
@@ -478,7 +478,7 @@ class DbusMultiPlusEmulator:
                     self._dbusservice["/Ac/ActiveIn/L3/I"] = self.grid_items["/Ac/L3/Current"].get_value()
                 else:
                     self._dbusservice["/Ac/ActiveIn/L3/I"] = round(self._dbusservice["/Ac/ActiveIn/L3/P"] / self._dbusservice["/Ac/ActiveIn/L3/V"], 2)
-
+'''
         # calculate total values
         self._dbusservice["/Ac/ActiveIn/P"] = (
             self.zeroIfNone(self._dbusservice["/Ac/ActiveIn/L1/P"]) + self.zeroIfNone(self._dbusservice["/Ac/ActiveIn/L2/P"]) + self.zeroIfNone(self._dbusservice["/Ac/ActiveIn/L3/P"])
@@ -491,11 +491,11 @@ class DbusMultiPlusEmulator:
 
         # get values from BMS
         # for bubble flow in GUI
-        self._dbusservice["/Dc/0/Current"] = dc_current
+        #self._dbusservice["/Dc/0/Current"] = dc_current
         # self._dbusservice["/Dc/0/MaxChargeCurrent"] = self.system_items["/Info/MaxChargeCurrent"]
-        self._dbusservice["/Dc/0/Power"] = dc_power
-        self._dbusservice["/Dc/0/Temperature"] = self.system_items["/Dc/Battery/Temperature"].get_value()
-        self._dbusservice["/Dc/0/Voltage"] = dc_voltage
+        #self._dbusservice["/Dc/0/Power"] = dc_power
+        #self._dbusservice["/Dc/0/Temperature"] = self.system_items["/Dc/Battery/Temperature"].get_value()
+        #self._dbusservice["/Dc/0/Voltage"] = dc_voltage
 
         self._dbusservice["/Devices/0/UpTime"] = int(time()) - time_driver_started
 
