@@ -387,7 +387,7 @@ class DbusMultiPlusEmulator:
                     self._dbusservice["/Ac/ActiveIn/L3/I"] = self.ac_load_items["/Ac/L3/Current"].get_value()
                 else:
                     self._dbusservice["/Ac/ActiveIn/L3/I"] = round(self._dbusservice["/Ac/ActiveIn/L3/P"] / self._dbusservice["/Ac/ActiveIn/L3/V"], 2)
-'''
+        '''
         else:
             # calculate ratio of power between each phases
             active_in_L1_power = self.system_items["/Ac/ActiveIn/L1/Power"].get_value() if self.system_items["/Ac/ActiveIn/L1/Power"] is not None else 0
@@ -484,7 +484,7 @@ class DbusMultiPlusEmulator:
             self.zeroIfNone(self._dbusservice["/Ac/ActiveIn/L1/P"]) + self.zeroIfNone(self._dbusservice["/Ac/ActiveIn/L2/P"]) + self.zeroIfNone(self._dbusservice["/Ac/ActiveIn/L3/P"])
         )
         self._dbusservice["/Ac/ActiveIn/S"] = self._dbusservice["/Ac/ActiveIn/P"]
-'''
+        '''
 
         # get values from BMS
         # for bubble flow in chart and load visualization
